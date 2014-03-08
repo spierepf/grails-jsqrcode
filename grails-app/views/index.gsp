@@ -3,5 +3,6 @@
     <head>
     </head>
     <body>
+        <jsqr:textField/>
     </body>
 </html>
