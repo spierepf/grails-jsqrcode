@@ -6,13 +6,14 @@ class JsqrcodeTagLib {
     
     static namespace = 'jsqr'
     
-    def textField = {attrs ->
-        out << createTextField()
+    def scanButton = {attrs ->
+        def fieldName = attrs['fieldName']
+        out << createScanButton(fieldName)
     }
     
-    def createTextField() {
+    def createScanButton(fieldName) {
         StringBuilder sb = new StringBuilder()
-        sb << """<input type='text'/><button>Scan</button>"""
+        sb << """<button onClick = "alert('${fieldName}')">Scan</button>"""
         sb.toString()
     }
 }

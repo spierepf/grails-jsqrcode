@@ -3,6 +3,6 @@
     <head>
     </head>
     <body>
-        <jsqr:textField/>
+        <g:textField name="someField"/><jsqr:scanButton fieldName="someField"/>
     </body>
 </html>
