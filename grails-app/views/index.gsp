@@ -3,6 +3,11 @@
     <head>
     </head>
     <body>
-        <g:textField name="someField"/><jsqr:scanButton fieldName="someField"/>
+        <div>
+            <g:textField name="someField"/><jsqr:scanButton fieldId="someField"/>
+        </div>
+        <div>
+            <g:textField name="someOtherField"/><jsqr:scanButton fieldId="someOtherField"/>
+        </div>
     </body>
 </html>

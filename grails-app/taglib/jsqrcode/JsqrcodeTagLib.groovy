@@ -7,13 +7,13 @@ class JsqrcodeTagLib {
     static namespace = 'jsqr'
     
     def scanButton = {attrs ->
-        def fieldName = attrs['fieldName']
-        out << createScanButton(fieldName)
+        def fieldId = attrs['fieldId']
+        out << createScanButton(fieldId)
     }
     
-    def createScanButton(fieldName) {
+    def createScanButton(fieldId) {
         StringBuilder sb = new StringBuilder()
-        sb << """<button onClick = "alert('${fieldName}')">Scan</button>"""
+        sb << """<button onClick="document.getElementById('${fieldId}').value='Hello World!'">Scan</button>"""
         sb.toString()
     }
 }
