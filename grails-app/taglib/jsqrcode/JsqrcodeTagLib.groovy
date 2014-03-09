@@ -18,13 +18,31 @@ class JsqrcodeTagLib {
     def createScanCanvas() {
         StringBuilder sb = new StringBuilder()
         sb << """
-<video id="jsqr_source" hidden autoplay/>
+<video id="jsqr_source" hidden autoplay></video>
+<canvas id="qr-canvas" width="640" height="480" hidden></canvas>
+<img id="jsqr_display" src="" width="320" height="240" hidden>
 
 <script>
 var localMediaStream = null;
+var video = document.getElementById("jsqr_source");
+var canvas = document.getElementById("qr-canvas");
+var display = document.getElementById("jsqr_display");
+var canvasContext = canvas.getContext('2d');
+
+function showDisplay() {
+    display.hidden = false;
+}
+
+function hideDisplay() {
+    display.hidden = true;
+}
 
 function captureToCanvas() {
-    document.getElementById("jsqr_source").hidden = false;
+    if(localMediaStream) {
+        canvasContext.drawImage(video, 0, 0);
+        display.src = canvas.toDataURL('image/webp');
+        setTimeout(captureToCanvas, 500);
+    }
 }
 
 function startScan(fieldId) {
@@ -32,8 +50,9 @@ function startScan(fieldId) {
     if (navigator.getUserMedia) {
         navigator.getUserMedia({video: true}, function(stream) {
             document.getElementById("jsqr_source").src = window.URL.createObjectURL(stream);
-            captureToCanvas();
             localMediaStream = stream;
+            showDisplay();
+            captureToCanvas();
         }, function(e) {console.log('Reeeejected!', e);});
     }
 
