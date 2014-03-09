@@ -4,6 +4,9 @@
     </head>
     <body>
         <div>
+            <jsqr:scanCanvas/>
+        </div>
+        <div>
             <g:textField name="someField"/><jsqr:scanButton fieldId="someField"/>
         </div>
         <div>
