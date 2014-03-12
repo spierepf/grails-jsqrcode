@@ -45,5 +45,7 @@ grails.project.dependency.resolution = {
               ':tomcat:7.0.52.1') {
             export = false
         }
+
+        compile ":asset-pipeline:1.6.2"
     }
 }
