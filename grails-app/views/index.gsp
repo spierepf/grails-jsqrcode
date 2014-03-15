@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <asset:javascript src="jsqrcode.js"/>
     </head>
     <body>
         <div>

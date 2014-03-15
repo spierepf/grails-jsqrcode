@@ -18,24 +18,6 @@ class JsqrcodeTagLib {
     def createScanCanvas() {
         StringBuilder sb = new StringBuilder()
         sb << """
-<script src="/${grails.util.Metadata.current.'app.name'}/js/jsqrcode/grid.js"></script>
-<script src="/${grails.util.Metadata.current.'app.name'}/js/jsqrcode/version.js"></script>
-<script src="/${grails.util.Metadata.current.'app.name'}/js/jsqrcode/detector.js"></script>
-<script src="/${grails.util.Metadata.current.'app.name'}/js/jsqrcode/formatinf.js"></script>
-<script src="/${grails.util.Metadata.current.'app.name'}/js/jsqrcode/errorlevel.js"></script>
-<script src="/${grails.util.Metadata.current.'app.name'}/js/jsqrcode/bitmat.js"></script>
-<script src="/${grails.util.Metadata.current.'app.name'}/js/jsqrcode/datablock.js"></script>
-<script src="/${grails.util.Metadata.current.'app.name'}/js/jsqrcode/bmparser.js"></script>
-<script src="/${grails.util.Metadata.current.'app.name'}/js/jsqrcode/datamask.js"></script>
-<script src="/${grails.util.Metadata.current.'app.name'}/js/jsqrcode/rsdecoder.js"></script>
-<script src="/${grails.util.Metadata.current.'app.name'}/js/jsqrcode/gf256poly.js"></script>
-<script src="/${grails.util.Metadata.current.'app.name'}/js/jsqrcode/gf256.js"></script>
-<script src="/${grails.util.Metadata.current.'app.name'}/js/jsqrcode/decoder.js"></script>
-<script src="/${grails.util.Metadata.current.'app.name'}/js/jsqrcode/qrcode.js"></script>
-<script src="/${grails.util.Metadata.current.'app.name'}/js/jsqrcode/findpat.js"></script>
-<script src="/${grails.util.Metadata.current.'app.name'}/js/jsqrcode/alignpat.js"></script>
-<script src="/${grails.util.Metadata.current.'app.name'}/js/jsqrcode/databr.js"></script>
-
 <video id="jsqr_source" hidden autoplay></video>
 <canvas id="qr-canvas" width="640" height="480" hidden></canvas>
 <img id="jsqr_display" src="" width="320" height="240" hidden>
