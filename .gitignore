@@ -1,5 +1,6 @@
-target
-web-app/WEB-INF
-grails-jsqrcode-0.1.zip
-grails-jsqrcode-0.1.zip.sha1
+/target
+/web-app/WEB-INF
+grails-jsqrcode-*.zip
+grails-jsqrcode-*.zip.sha1
 plugin.xml
+*.log

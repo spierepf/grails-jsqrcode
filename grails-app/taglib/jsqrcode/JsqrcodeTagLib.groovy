@@ -3,21 +3,11 @@ package jsqrcode
 class JsqrcodeTagLib {
     //static defaultEncodeAs = 'html'
     //static encodeAsForTags = [tagName: 'raw']
-    
+
     static namespace = 'jsqr'
-    
-    def scanCanvas = {attrs ->
-        out << createScanCanvas()
-    }
-    
-    def scanButton = {attrs ->
-        def fieldId = attrs['fieldId']
-        out << createScanButton(fieldId)
-    }
-    
-    def createScanCanvas() {
-        StringBuilder sb = new StringBuilder()
-        sb << """
+
+    def scanCanvas = { attrs ->
+        out << """
 <video id="jsqr_source" hidden autoplay></video>
 <canvas id="qr-canvas" width="640" height="480" hidden></canvas>
 <img id="jsqr_display" src="" width="320" height="240" hidden>
@@ -49,7 +39,7 @@ function captureToCanvas() {
             localMediaStream = null;
             hideDisplay();
         }
-        catch(e) {       
+        catch(e) {
             console.log(e);
             setTimeout(captureToCanvas, 500);
         };
@@ -70,12 +60,9 @@ function startScan(fieldId) {
 }
 </script>
 """
-        sb.toString()
     }
-    
-    def createScanButton(fieldId) {
-        StringBuilder sb = new StringBuilder()
-        sb << """<button onClick="startScan('${fieldId}')">Scan</button>"""
-        sb.toString()
+
+    def scanButton = { attrs ->
+        out << """<button onClick="startScan('${attrs.fieldId}')">Scan</button>"""
     }
 }
