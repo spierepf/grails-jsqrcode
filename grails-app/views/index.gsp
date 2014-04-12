@@ -7,11 +7,13 @@
         <div>
             <jsqr:scanCanvas/>
         </div>
-        <div>
-            <g:textField name="someField"/><jsqr:scanButton fieldId="someField"/>
-        </div>
-        <div>
-            <g:textField name="someOtherField"/><jsqr:scanButton fieldId="someOtherField"/>
-        </div>
+        <g:form name="myForm" controller="test" action="myaction">
+	        <div>
+	            <g:textField name="someField"/><jsqr:scanButton fieldId="someField" formId="myForm"/>
+	        </div>
+	        <div>
+	            <g:textField name="someOtherField"/><jsqr:scanButton fieldId="someOtherField"/>
+	        </div>
+        </g:form>
     </body>
 </html>

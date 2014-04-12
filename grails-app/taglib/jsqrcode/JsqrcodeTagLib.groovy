@@ -11,8 +11,10 @@ class JsqrcodeTagLib {
     }
     
     def scanButton = {attrs ->
-        def fieldId = attrs['fieldId']
-        out << createScanButton(fieldId)
+        def fieldId = attrs['fieldId'] == null ? 'null' : "'" + attrs['fieldId'] + "'"
+		def formId = attrs['formId'] == null ? 'null' : "'" + attrs['formId'] + "'"
+		
+        out << createScanButton(fieldId, formId)
     }
     
     def createScanCanvas() {
@@ -56,10 +58,10 @@ function captureToCanvas() {
     }
 }
 
-function startScan(fieldId) {
+function startScan(fieldId, formId) {
     navigator.getUserMedia  = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
     if (navigator.getUserMedia) {
-        qrcode.callback = function(text) {document.getElementById(fieldId).value=text;};
+        qrcode.callback = function(text) {document.getElementById(fieldId).value=text; if (formId != null) document.forms[formId].submit();};
         navigator.getUserMedia({video: true}, function(stream) {
             video.src = window.URL.createObjectURL(stream);
             localMediaStream = stream;
@@ -73,9 +75,9 @@ function startScan(fieldId) {
         sb.toString()
     }
     
-    def createScanButton(fieldId) {
+    def createScanButton(fieldId, formId) {
         StringBuilder sb = new StringBuilder()
-        sb << """<button onClick="startScan('${fieldId}')">Scan</button>"""
+        sb << """<button type='button' onClick="startScan(${fieldId}, ${formId})">Scan</button>"""
         sb.toString()
     }
 }
