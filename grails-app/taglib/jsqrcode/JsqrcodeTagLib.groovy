@@ -17,6 +17,13 @@ class JsqrcodeTagLib {
         out << createScanButton(fieldId, formId)
     }
     
+    def scanOnLoad = {attrs ->
+        def fieldId = attrs['fieldId'] == null ? 'null' : "'" + attrs['fieldId'] + "'"
+		def formId = attrs['formId'] == null ? 'null' : "'" + attrs['formId'] + "'"
+		
+        out << createScanOnLoad(fieldId, formId)
+    }
+    
     def createScanCanvas() {
         StringBuilder sb = new StringBuilder()
         sb << """
@@ -78,6 +85,17 @@ function startScan(fieldId, formId) {
     def createScanButton(fieldId, formId) {
         StringBuilder sb = new StringBuilder()
         sb << """<button type='button' onClick="startScan(${fieldId}, ${formId})">Scan</button>"""
+        sb.toString()
+    }
+    
+    def createScanOnLoad(fieldId, formId) {
+        StringBuilder sb = new StringBuilder()
+        sb << """
+<script>
+window.addEventListener ?
+window.addEventListener("load", function(){startScan(${fieldId}, ${formId});}, false) :
+window.attachEvent && window.attachEvent("onload", function(){startScan(${fieldId}, ${formId});});
+</script>"""
         sb.toString()
     }
 }
